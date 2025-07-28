@@ -10,7 +10,14 @@ using Telegram.Bot.Types.ReplyMarkups;
 Dictionary<long, (double lat, double lon)> userLocations = new();
 Dictionary<long, double> userSearchRadius = new();
 
-var botClient = new TelegramBotClient("8210709393:AAGVD-ls7xY85BB0zydiTFUQq1X4vkWITLs");
+var botToken = Environment.GetEnvironmentVariable("BOT_TOKEN");
+if (string.IsNullOrEmpty(botToken))
+{
+    Console.WriteLine("❌ Переменная окружения BOT_TOKEN не установлена.");
+    return;
+}
+var botClient = new TelegramBotClient(botToken);
+
 
 var cts = new CancellationTokenSource();
 
