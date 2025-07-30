@@ -29,8 +29,8 @@ botClient.StartReceiving(
 
 var me = await botClient.GetMeAsync();
 Console.WriteLine($"Бот запущен: @{me.Username}");
-Console.ReadLine();
-cts.Cancel();
+await Task.Delay(-1); // бесконечное ожидание, чтобы бот не завершался
+
 
 async Task<List<(string name, double lat, double lon)>> SearchPlacesOverpassAsync(
     double lat, double lon, List<(string key, string value)> tags, double searchRadius)
