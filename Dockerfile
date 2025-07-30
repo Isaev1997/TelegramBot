@@ -15,4 +15,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-ENTRYPOINT ["dotnet", "YourBotProject.dll"]
+ENTRYPOINT ["dotnet", "City_Assistant.dll"]
