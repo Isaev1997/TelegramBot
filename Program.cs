@@ -85,24 +85,7 @@ async Task<List<(string name, double lat, double lon)>> SearchPlacesOverpassAsyn
 
 async Task HandleUpdateAsync(ITelegramBotClient bot, Update update, CancellationToken cancellationToken)
 {
-    var now = DateTime.UtcNow.AddHours(5); // Узбекистан (UTC+5)
-if (now.Hour >= 23 || now.Hour < 7)
-{
-    long chatId = update.Message?.Chat.Id
-        ?? update.CallbackQuery?.Message.Chat.Id
-        ?? 0;
-
-    if (chatId != 0)
-    {
-        await bot.SendTextMessageAsync(
-            chatId,
-            "⏳ Бот работает ежедневно с 07:00 до 23:00. Попробуйте позже.",
-            cancellationToken: cancellationToken
-        );
-    }
-
-    return;
-}
+   
 
 
     if (update.Message?.Location != null)
